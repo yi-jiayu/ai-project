@@ -1,6 +1,14 @@
 # ai-project
 Project for Summer 2017 50.021 Artificial Intelligence at SUTD
 
+## Description
+The top layer of a pre-trained Inception v3 network was removed and replaced with a new one trained on the BreaKHis dataset to distinguish between images of benign and malignant breast cancer histopathological images. This transfer learning process can be done without a GPU and the generated models obtain upwards of 85% accuracy on the provided splits.
+
+Mostly based on the excellent ["How to Retrain Inception's Final Layer for New Categories" tutorial](https://www.tensorflow.org/tutorials/image_retraining) on the Tensorflow website.
+
+## Future Work
+The authors of the original paper [1] obtained the best performance using random 64x64 patches extracted from each image, while currently no data augmentation is being performed here. However, the `retrain_modified.py` script used here is able to take additional parameters to randomly scale, crop, change the brightness and flip the training inputs. These distortions were not carried out since they appeared to significantly extend the training time, but perhaps with a GPU the effect of distorting the training inputs on accuracy can be examined.
+
 ## Dependencies
 - Tensorflow
 - ImageMagick
@@ -58,3 +66,6 @@ jiayu@jy-9360:~/ai-project$ python3 label_image.py --graph ~/output_graph-split1
 malignant (score = 0.99341)
 benign (score = 0.00659)
 ```
+
+## References
+1: Spanhol, F. A., Oliveira, L. S., Petitjean, C., & Heutte, L. (2016, July). Breast cancer histopathological image classification using convolutional neural networks. In Neural Networks (IJCNN), 2016 International Joint Conference on (pp. 2560-2567). IEEE.
