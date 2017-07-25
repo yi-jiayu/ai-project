@@ -133,6 +133,9 @@ def create_image_lists(image_dir, split_dir, zoom_level):
   if not gfile.Exists(image_dir):
     print("Image directory '" + image_dir + "' not found.")
     return None
+  if not gfile.Exists(os.path.join(image_dir, 'BreaKHis_v1')):
+      print("Image directory '" + image_dir + "' should contain the 'BreaKHis_v1' folder.")
+    return None
   if not gfile.Exists(split_dir):
     print("Split directory '" + split_dir + "' not found.")
     return None
